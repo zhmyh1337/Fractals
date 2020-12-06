@@ -43,7 +43,7 @@ namespace Fractals
 
         private void FractalPaint(object sender, PaintEventArgs e)
         {
-            var x = new PythagoreanTree(10);
+            var x = new PythagoreanTree(15, Color.Blue, Color.Red);
             x.Draw(e);
         }
     }

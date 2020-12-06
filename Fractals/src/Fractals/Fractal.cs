@@ -8,13 +8,17 @@ namespace Fractals
 {
     abstract class Fractal
     {
-        protected Fractal(int recursionLevel)
+        protected Fractal(int recursionLevel, Color gradientBeginning, Color gradientEnding)
         {
             _recursionLevelLimit = recursionLevel;
+            _gradientBeginning = gradientBeginning;
+            _gradientEnding = gradientEnding;
         }
 
         public abstract void Draw(PaintEventArgs paintEventArgs);
 
         protected readonly int _recursionLevelLimit;
+        protected readonly Color _gradientBeginning;
+        protected readonly Color _gradientEnding;
     }
 }

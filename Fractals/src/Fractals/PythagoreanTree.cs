@@ -9,8 +9,8 @@ namespace Fractals
 {
     class PythagoreanTree : Fractal
     {
-        public PythagoreanTree(int recursionLevel)
-            : base(recursionLevel)
+        public PythagoreanTree(int recursionLevel, Color gradientBeginning, Color gradientEnding)
+            : base(recursionLevel, gradientBeginning, gradientEnding)
         {
 
         }
@@ -26,7 +26,7 @@ namespace Fractals
             var newPoint = point;
             newPoint.Y -= length;
 
-            graphics.DrawLine(Pens.Black, point, newPoint);
+            graphics.DrawLine(new Pen(Utilities.ColorLerp(_gradientBeginning, _gradientEnding, 0.0f), 2), point, newPoint);
             Draw(graphics, newPoint, length, (float)(-Math.PI / 2));
         }
 
@@ -50,12 +50,15 @@ namespace Fractals
                 point.Y + (float)Math.Sin(newAngle) * newLength
             );
 
-            graphics.DrawLine(Pens.Black, point, newPoint);
+            graphics.DrawLine(new Pen(
+                Utilities.ColorLerp(_gradientBeginning, _gradientEnding, (float)recursionLevel / (_recursionLevelLimit - 1)), 2),
+                point, newPoint
+            );
             Draw(graphics, newPoint, newLength, newAngle, recursionLevel + 1);
         }
 
         private readonly float _lengthRatio = 2.0f / 3;
-        private readonly float _angle1 = (float)(-Math.PI / 4);
-        private readonly float _angle2 = (float)(Math.PI / 4);
+        private readonly float _angle1 = (float)(-Math.PI / 3);
+        private readonly float _angle2 = (float)(Math.PI / 3.5);
     }
 }
