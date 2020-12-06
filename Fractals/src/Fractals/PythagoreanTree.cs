@@ -15,10 +15,10 @@ namespace Fractals
 
         }
 
-        public override void Draw(PaintEventArgs paintEventArgs)
+        public override void Draw(Graphics graphics)
         {
-            Draw(paintEventArgs.Graphics, new PointF(paintEventArgs.ClipRectangle.Width * 0.5f, paintEventArgs.ClipRectangle.Bottom),
-                paintEventArgs.ClipRectangle.Height * 0.3f);
+            Draw(graphics, new PointF(graphics.VisibleClipBounds.Width * 0.5f, graphics.VisibleClipBounds.Bottom),
+                graphics.VisibleClipBounds.Height * 0.3f);
         }
 
         private void Draw(Graphics graphics, PointF point, float length)

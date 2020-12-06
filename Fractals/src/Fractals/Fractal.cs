@@ -15,7 +15,7 @@ namespace Fractals
             _gradientEnding = gradientEnding;
         }
 
-        public abstract void Draw(PaintEventArgs paintEventArgs);
+        public abstract void Draw(Graphics graphics);
 
         protected readonly int _recursionLevelLimit;
         protected readonly Color _gradientBeginning;
