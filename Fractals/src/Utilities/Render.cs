@@ -22,6 +22,13 @@ namespace Fractals
             graphics.DrawLine(pen, screenA, screenB);
         }
 
+        public void DrawTriangle(Graphics graphics, Pen pen, PointF a, PointF b, PointF c)
+        {
+            DrawLine(graphics, pen, a, b);
+            DrawLine(graphics, pen, b, c);
+            DrawLine(graphics, pen, c, a);
+        }
+
         public void DrawFilledRectangle(Graphics graphics, Brush brush, RectangleF rectangle)
         {
             var topLeft = rectangle.Location;

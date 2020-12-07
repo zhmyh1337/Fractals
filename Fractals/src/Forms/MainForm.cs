@@ -53,6 +53,7 @@ namespace Fractals
                     _ptFirstLineLengthTextslider.Value, _ptLengthRatioTextslider.Value, _ptAngle1Textslider.Value, _ptAngle2Textslider.Value),
                 1 => new KochCurve((int)_recursionTextslider.Value, _gradientColorA, _gradientColorB, render),
                 2 => new SierpinskiCarpet((int)_recursionTextslider.Value, _gradientColorA, _gradientColorB, render),
+                3 => new SierpinskiTriangle((int)_recursionTextslider.Value, _gradientColorA, _gradientColorB, render),
                 _ => throw new NotImplementedException()
             };
 
