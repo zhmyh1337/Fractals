@@ -22,6 +22,19 @@ namespace Fractals
             graphics.DrawLine(pen, screenA, screenB);
         }
 
+        public void DrawFilledRectangle(Graphics graphics, Brush brush, RectangleF rectangle)
+        {
+            var topLeft = rectangle.Location;
+            var bottomRight = new PointF(topLeft.X + rectangle.Width, topLeft.Y + rectangle.Height);
+
+            var screenTopLeft = PointToScreen(topLeft);
+            var screenBottomRight = PointToScreen(bottomRight);
+
+            var screenRectangle = new Rectangle(screenTopLeft,
+                new Size(screenBottomRight.X - screenTopLeft.X, screenBottomRight.Y - screenTopLeft.Y));
+            graphics.FillRectangle(brush, screenRectangle);
+        }
+
         private (PointF, PointF) GetCameraBounds()
         {
             var topLeft = new PointF(
