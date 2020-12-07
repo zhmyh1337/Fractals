@@ -9,16 +9,15 @@ namespace Fractals
 {
     class PythagoreanTree : Fractal
     {
-        public PythagoreanTree(int recursionLevel, Color gradientBeginning, Color gradientEnding)
-            : base(recursionLevel, gradientBeginning, gradientEnding)
+        public PythagoreanTree(int recursionLevel, Color gradientBeginning, Color gradientEnding, Render render)
+            : base(recursionLevel, gradientBeginning, gradientEnding, render)
         {
 
         }
 
         public override void Draw(Graphics graphics)
         {
-            Draw(graphics, new PointF(graphics.VisibleClipBounds.Width * 0.5f, graphics.VisibleClipBounds.Bottom),
-                graphics.VisibleClipBounds.Height * 0.3f);
+            Draw(graphics, new PointF(0, 1), 0.6f);
         }
 
         private void Draw(Graphics graphics, PointF point, float length)
@@ -26,7 +25,7 @@ namespace Fractals
             var newPoint = point;
             newPoint.Y -= length;
 
-            graphics.DrawLine(new Pen(Utilities.ColorLerp(_gradientBeginning, _gradientEnding, 0.0f), 2), point, newPoint);
+            _render.DrawLine(graphics, new Pen(Utilities.ColorLerp(_gradientBeginning, _gradientEnding, 0.0f), 2), point, newPoint);
             Draw(graphics, newPoint, length, (float)(-Math.PI / 2));
         }
 
@@ -50,7 +49,7 @@ namespace Fractals
                 point.Y + (float)Math.Sin(newAngle) * newLength
             );
 
-            graphics.DrawLine(new Pen(
+            _render.DrawLine(graphics, new Pen(
                 Utilities.ColorLerp(_gradientBeginning, _gradientEnding, (float)recursionLevel / (_recursionLevelLimit - 1)), 2),
                 point, newPoint
             );

@@ -35,8 +35,8 @@
             this.saveButton = new System.Windows.Forms.Button();
             this.clearButton = new System.Windows.Forms.Button();
             this.drawButton = new System.Windows.Forms.Button();
-            this.yoffsetTextslider = new Fractals.TextSlider();
-            this.xoffsetTextslider = new Fractals.TextSlider();
+            this.cameraYOffsetTextslider = new Fractals.TextSlider();
+            this.cameraXOffsetTextslider = new Fractals.TextSlider();
             this.scaleTextslider = new Fractals.TextSlider();
             this.recursionTextslider = new Fractals.TextSlider();
             this.autoRedrawCheckbox = new System.Windows.Forms.CheckBox();
@@ -75,8 +75,8 @@
             this.panel1.Controls.Add(this.saveButton);
             this.panel1.Controls.Add(this.clearButton);
             this.panel1.Controls.Add(this.drawButton);
-            this.panel1.Controls.Add(this.yoffsetTextslider);
-            this.panel1.Controls.Add(this.xoffsetTextslider);
+            this.panel1.Controls.Add(this.cameraYOffsetTextslider);
+            this.panel1.Controls.Add(this.cameraXOffsetTextslider);
             this.panel1.Controls.Add(this.scaleTextslider);
             this.panel1.Controls.Add(this.recursionTextslider);
             this.panel1.Controls.Add(this.autoRedrawCheckbox);
@@ -136,31 +136,31 @@
             // 
             // yoffsetTextslider
             // 
-            this.yoffsetTextslider.AutoSize = true;
-            this.yoffsetTextslider.Label = "y offset:";
-            this.yoffsetTextslider.Location = new System.Drawing.Point(0, 203);
-            this.yoffsetTextslider.Name = "yoffsetTextslider";
-            this.yoffsetTextslider.RoundValue = false;
-            this.yoffsetTextslider.Size = new System.Drawing.Size(358, 59);
-            this.yoffsetTextslider.SliderLowerBound = -5F;
-            this.yoffsetTextslider.SliderUpperBound = 5F;
-            this.yoffsetTextslider.TabIndex = 3;
-            this.yoffsetTextslider.Value = 0F;
-            this.yoffsetTextslider.OnChange += new System.EventHandler(this.ValuesUpdate);
+            this.cameraYOffsetTextslider.AutoSize = true;
+            this.cameraYOffsetTextslider.Label = "camera y offset:";
+            this.cameraYOffsetTextslider.Location = new System.Drawing.Point(0, 203);
+            this.cameraYOffsetTextslider.Name = "yoffsetTextslider";
+            this.cameraYOffsetTextslider.RoundValue = false;
+            this.cameraYOffsetTextslider.Size = new System.Drawing.Size(358, 59);
+            this.cameraYOffsetTextslider.SliderLowerBound = -5F;
+            this.cameraYOffsetTextslider.SliderUpperBound = 5F;
+            this.cameraYOffsetTextslider.TabIndex = 3;
+            this.cameraYOffsetTextslider.Value = 0F;
+            this.cameraYOffsetTextslider.OnChange += new System.EventHandler(this.ValuesUpdate);
             // 
             // xoffsetTextslider
             // 
-            this.xoffsetTextslider.AutoSize = true;
-            this.xoffsetTextslider.Label = "x offset:";
-            this.xoffsetTextslider.Location = new System.Drawing.Point(0, 147);
-            this.xoffsetTextslider.Name = "xoffsetTextslider";
-            this.xoffsetTextslider.RoundValue = false;
-            this.xoffsetTextslider.Size = new System.Drawing.Size(358, 59);
-            this.xoffsetTextslider.SliderLowerBound = -5F;
-            this.xoffsetTextslider.SliderUpperBound = 5F;
-            this.xoffsetTextslider.TabIndex = 3;
-            this.xoffsetTextslider.Value = 0F;
-            this.xoffsetTextslider.OnChange += new System.EventHandler(this.ValuesUpdate);
+            this.cameraXOffsetTextslider.AutoSize = true;
+            this.cameraXOffsetTextslider.Label = "camera x offset:";
+            this.cameraXOffsetTextslider.Location = new System.Drawing.Point(0, 147);
+            this.cameraXOffsetTextslider.Name = "xoffsetTextslider";
+            this.cameraXOffsetTextslider.RoundValue = false;
+            this.cameraXOffsetTextslider.Size = new System.Drawing.Size(358, 59);
+            this.cameraXOffsetTextslider.SliderLowerBound = -5F;
+            this.cameraXOffsetTextslider.SliderUpperBound = 5F;
+            this.cameraXOffsetTextslider.TabIndex = 3;
+            this.cameraXOffsetTextslider.Value = 0F;
+            this.cameraXOffsetTextslider.OnChange += new System.EventHandler(this.ValuesUpdate);
             // 
             // scaleTextslider
             // 
@@ -236,8 +236,8 @@
         private System.Windows.Forms.CheckBox autoRedrawCheckbox;
         private System.Windows.Forms.ComboBox comboBox1;
         private TextSlider scaleTextslider;
-        private TextSlider xoffsetTextslider;
-        private TextSlider yoffsetTextslider;
+        private TextSlider cameraXOffsetTextslider;
+        private TextSlider cameraYOffsetTextslider;
         private System.Windows.Forms.Button drawButton;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button clearButton;

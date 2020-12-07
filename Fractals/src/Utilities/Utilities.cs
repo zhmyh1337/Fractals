@@ -14,10 +14,10 @@ namespace Fractals
 
         public static float Lerp(float from, float to, float progress)
         {
-            if (progress < 0.0f || progress > 1.0f)
-            {
-                throw new ArgumentException("Progress is out of range.", "progress");
-            }
+//             if (progress < 0.0f || progress > 1.0f)
+//             {
+//                 throw new ArgumentException("Progress is out of range.", "progress");
+//             }
 
             return from + (to - from) * progress;
         }

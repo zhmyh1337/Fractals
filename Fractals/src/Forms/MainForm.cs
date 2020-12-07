@@ -38,7 +38,8 @@ namespace Fractals
 
         private void FractalPaint(object sender, PaintEventArgs e)
         {
-            var x = new PythagoreanTree((int)recursionTextslider.Value, _gradientColorA, _gradientColorB);
+            var render = new Render(scaleTextslider.Value, cameraXOffsetTextslider.Value, cameraYOffsetTextslider.Value, _canvasPanel.Size);
+            var x = new PythagoreanTree((int)recursionTextslider.Value, _gradientColorA, _gradientColorB, render);
             x.Draw(e.Graphics);
         }
 

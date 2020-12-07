@@ -10,20 +10,27 @@ namespace Fractals
         public Render(float scale, float offsetX, float offsetY, SizeF canvasSize)
         {
             _scale = scale;
-            _offsetX = offsetX;
-            _offsetY = offsetY;
+            _cameraOffsetX = offsetX;
+            _cameraOffsetY = offsetY;
             _canvasSize = canvasSize;
+        }
+
+        public void DrawLine(Graphics graphics, Pen pen, PointF a, PointF b)
+        {
+            var screenA = PointToScreen(a);
+            var screenB = PointToScreen(b);
+            graphics.DrawLine(pen, screenA, screenB);
         }
 
         private (PointF, PointF) GetCameraBounds()
         {
             var topLeft = new PointF(
-                _offsetX - 1f / _scale,
-                _offsetY - 1f / _scale
+                _cameraOffsetX - 1f / _scale,
+                _cameraOffsetY - 1f / _scale
             );
             var bottomRight = new PointF(
-                _offsetX + 1f / _scale,
-                _offsetY + 1f / _scale
+                _cameraOffsetX + 1f / _scale,
+                _cameraOffsetY + 1f / _scale
             );
             return (topLeft, bottomRight);
         }
@@ -43,8 +50,8 @@ namespace Fractals
         }
 
         private readonly float _scale;
-        private readonly float _offsetX;
-        private readonly float _offsetY;
+        private readonly float _cameraOffsetX;
+        private readonly float _cameraOffsetY;
         private readonly SizeF _canvasSize;
     }
 }
