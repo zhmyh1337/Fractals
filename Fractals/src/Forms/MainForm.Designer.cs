@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this._splitContainer = new System.Windows.Forms.SplitContainer();
-            this._specialOptionsPanel = new System.Windows.Forms.Panel();
-            this.textSlider4 = new Fractals.TextSlider();
-            this.textSlider3 = new Fractals.TextSlider();
-            this.textSlider2 = new Fractals.TextSlider();
-            this.textSlider1 = new Fractals.TextSlider();
+            this._ptOptionsPanel = new System.Windows.Forms.Panel();
+            this._ptAngle2Textslider = new Fractals.TextSlider();
+            this._ptAngle1Textslider = new Fractals.TextSlider();
+            this._ptLengthRatioTextslider = new Fractals.TextSlider();
+            this._ptFirstLineLengthTextslider = new Fractals.TextSlider();
             this._commonOptionsPanel = new System.Windows.Forms.Panel();
             this._gradientColorBButton = new System.Windows.Forms.Button();
             this._gradientColorAButton = new System.Windows.Forms.Button();
@@ -49,7 +49,7 @@
             ((System.ComponentModel.ISupportInitialize)(this._splitContainer)).BeginInit();
             this._splitContainer.Panel2.SuspendLayout();
             this._splitContainer.SuspendLayout();
-            this._specialOptionsPanel.SuspendLayout();
+            this._ptOptionsPanel.SuspendLayout();
             this._commonOptionsPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,7 +67,7 @@
             // 
             // _splitContainer.Panel2
             // 
-            this._splitContainer.Panel2.Controls.Add(this._specialOptionsPanel);
+            this._splitContainer.Panel2.Controls.Add(this._ptOptionsPanel);
             this._splitContainer.Panel2.Controls.Add(this._commonOptionsPanel);
             this._splitContainer.Size = new System.Drawing.Size(959, 578);
             this._splitContainer.SplitterDistance = 578;
@@ -75,84 +75,88 @@
             this._splitContainer.TabIndex = 0;
             this._splitContainer.Text = "splitContainer";
             // 
-            // _specialOptionsPanel
+            // _ptOptionsPanel
             // 
-            this._specialOptionsPanel.Controls.Add(this.textSlider4);
-            this._specialOptionsPanel.Controls.Add(this.textSlider3);
-            this._specialOptionsPanel.Controls.Add(this.textSlider2);
-            this._specialOptionsPanel.Controls.Add(this.textSlider1);
-            this._specialOptionsPanel.Location = new System.Drawing.Point(4, 341);
-            this._specialOptionsPanel.Name = "_specialOptionsPanel";
-            this._specialOptionsPanel.Size = new System.Drawing.Size(368, 230);
-            this._specialOptionsPanel.TabIndex = 1;
+            this._ptOptionsPanel.Controls.Add(this._ptAngle2Textslider);
+            this._ptOptionsPanel.Controls.Add(this._ptAngle1Textslider);
+            this._ptOptionsPanel.Controls.Add(this._ptLengthRatioTextslider);
+            this._ptOptionsPanel.Controls.Add(this._ptFirstLineLengthTextslider);
+            this._ptOptionsPanel.Location = new System.Drawing.Point(4, 341);
+            this._ptOptionsPanel.Name = "_ptOptionsPanel";
+            this._ptOptionsPanel.Size = new System.Drawing.Size(368, 230);
+            this._ptOptionsPanel.TabIndex = 1;
             // 
-            // textSlider4
+            // _ptAngle2Textslider
             // 
-            this.textSlider4.AutoSize = true;
-            this.textSlider4.Label = "label";
-            this.textSlider4.Location = new System.Drawing.Point(0, 168);
-            this.textSlider4.Name = "textSlider4";
-            this.textSlider4.RoundValue = false;
-            this.textSlider4.Size = new System.Drawing.Size(358, 59);
-            this.textSlider4.SliderLowerBound = 0F;
-            this.textSlider4.SliderUpperBound = 1F;
-            this.textSlider4.TabIndex = 0;
-            this.textSlider4.Value = 0F;
-            this.textSlider4.ValueLowerBound = float.NegativeInfinity;
-            this.textSlider4.ValueLowerBoundIncluded = false;
-            this.textSlider4.ValueUpperBound = float.PositiveInfinity;
-            this.textSlider4.ValueUpperBoundIncluded = false;
+            this._ptAngle2Textslider.AutoSize = true;
+            this._ptAngle2Textslider.Label = "angle2:";
+            this._ptAngle2Textslider.Location = new System.Drawing.Point(0, 168);
+            this._ptAngle2Textslider.Name = "_ptAngle2Textslider";
+            this._ptAngle2Textslider.RoundValue = false;
+            this._ptAngle2Textslider.Size = new System.Drawing.Size(358, 59);
+            this._ptAngle2Textslider.SliderLowerBound = -180F;
+            this._ptAngle2Textslider.SliderUpperBound = 180F;
+            this._ptAngle2Textslider.TabIndex = 0;
+            this._ptAngle2Textslider.Value = 45F;
+            this._ptAngle2Textslider.ValueLowerBound = -10000F;
+            this._ptAngle2Textslider.ValueLowerBoundIncluded = true;
+            this._ptAngle2Textslider.ValueUpperBound = 10000F;
+            this._ptAngle2Textslider.ValueUpperBoundIncluded = true;
+            this._ptAngle2Textslider.OnChange += new System.EventHandler(this.ValuesUpdate);
             // 
-            // textSlider3
+            // _ptAngle1Textslider
             // 
-            this.textSlider3.AutoSize = true;
-            this.textSlider3.Label = "label";
-            this.textSlider3.Location = new System.Drawing.Point(0, 112);
-            this.textSlider3.Name = "textSlider3";
-            this.textSlider3.RoundValue = false;
-            this.textSlider3.Size = new System.Drawing.Size(358, 59);
-            this.textSlider3.SliderLowerBound = 0F;
-            this.textSlider3.SliderUpperBound = 1F;
-            this.textSlider3.TabIndex = 0;
-            this.textSlider3.Value = 0F;
-            this.textSlider3.ValueLowerBound = float.NegativeInfinity;
-            this.textSlider3.ValueLowerBoundIncluded = false;
-            this.textSlider3.ValueUpperBound = float.PositiveInfinity;
-            this.textSlider3.ValueUpperBoundIncluded = false;
+            this._ptAngle1Textslider.AutoSize = true;
+            this._ptAngle1Textslider.Label = "angle1:";
+            this._ptAngle1Textslider.Location = new System.Drawing.Point(0, 112);
+            this._ptAngle1Textslider.Name = "_ptAngle1Textslider";
+            this._ptAngle1Textslider.RoundValue = false;
+            this._ptAngle1Textslider.Size = new System.Drawing.Size(358, 59);
+            this._ptAngle1Textslider.SliderLowerBound = -180F;
+            this._ptAngle1Textslider.SliderUpperBound = 180F;
+            this._ptAngle1Textslider.TabIndex = 0;
+            this._ptAngle1Textslider.Value = -30F;
+            this._ptAngle1Textslider.ValueLowerBound = -10000F;
+            this._ptAngle1Textslider.ValueLowerBoundIncluded = true;
+            this._ptAngle1Textslider.ValueUpperBound = 10000F;
+            this._ptAngle1Textslider.ValueUpperBoundIncluded = true;
+            this._ptAngle1Textslider.OnChange += new System.EventHandler(this.ValuesUpdate);
             // 
-            // textSlider2
+            // _ptLengthRatioTextslider
             // 
-            this.textSlider2.AutoSize = true;
-            this.textSlider2.Label = "label";
-            this.textSlider2.Location = new System.Drawing.Point(0, 56);
-            this.textSlider2.Name = "textSlider2";
-            this.textSlider2.RoundValue = false;
-            this.textSlider2.Size = new System.Drawing.Size(358, 59);
-            this.textSlider2.SliderLowerBound = 0F;
-            this.textSlider2.SliderUpperBound = 1F;
-            this.textSlider2.TabIndex = 0;
-            this.textSlider2.Value = 0F;
-            this.textSlider2.ValueLowerBound = float.NegativeInfinity;
-            this.textSlider2.ValueLowerBoundIncluded = false;
-            this.textSlider2.ValueUpperBound = float.PositiveInfinity;
-            this.textSlider2.ValueUpperBoundIncluded = false;
+            this._ptLengthRatioTextslider.AutoSize = true;
+            this._ptLengthRatioTextslider.Label = "length ratio:";
+            this._ptLengthRatioTextslider.Location = new System.Drawing.Point(0, 56);
+            this._ptLengthRatioTextslider.Name = "_ptLengthRatioTextslider";
+            this._ptLengthRatioTextslider.RoundValue = false;
+            this._ptLengthRatioTextslider.Size = new System.Drawing.Size(358, 59);
+            this._ptLengthRatioTextslider.SliderLowerBound = 0F;
+            this._ptLengthRatioTextslider.SliderUpperBound = 1F;
+            this._ptLengthRatioTextslider.TabIndex = 0;
+            this._ptLengthRatioTextslider.Value = 0.66666F;
+            this._ptLengthRatioTextslider.ValueLowerBound = 0F;
+            this._ptLengthRatioTextslider.ValueLowerBoundIncluded = true;
+            this._ptLengthRatioTextslider.ValueUpperBound = 1F;
+            this._ptLengthRatioTextslider.ValueUpperBoundIncluded = true;
+            this._ptLengthRatioTextslider.OnChange += new System.EventHandler(this.ValuesUpdate);
             // 
-            // textSlider1
+            // _ptFirstLineLengthTextslider
             // 
-            this.textSlider1.AutoSize = true;
-            this.textSlider1.Label = "label";
-            this.textSlider1.Location = new System.Drawing.Point(0, 0);
-            this.textSlider1.Name = "textSlider1";
-            this.textSlider1.RoundValue = false;
-            this.textSlider1.Size = new System.Drawing.Size(358, 59);
-            this.textSlider1.SliderLowerBound = 0F;
-            this.textSlider1.SliderUpperBound = 1F;
-            this.textSlider1.TabIndex = 0;
-            this.textSlider1.Value = 0F;
-            this.textSlider1.ValueLowerBound = float.NegativeInfinity;
-            this.textSlider1.ValueLowerBoundIncluded = false;
-            this.textSlider1.ValueUpperBound = float.PositiveInfinity;
-            this.textSlider1.ValueUpperBoundIncluded = false;
+            this._ptFirstLineLengthTextslider.AutoSize = true;
+            this._ptFirstLineLengthTextslider.Label = "first line length:";
+            this._ptFirstLineLengthTextslider.Location = new System.Drawing.Point(0, 0);
+            this._ptFirstLineLengthTextslider.Name = "_ptFirstLineLengthTextslider";
+            this._ptFirstLineLengthTextslider.RoundValue = false;
+            this._ptFirstLineLengthTextslider.Size = new System.Drawing.Size(358, 59);
+            this._ptFirstLineLengthTextslider.SliderLowerBound = 0F;
+            this._ptFirstLineLengthTextslider.SliderUpperBound = 2F;
+            this._ptFirstLineLengthTextslider.TabIndex = 0;
+            this._ptFirstLineLengthTextslider.Value = 0.6F;
+            this._ptFirstLineLengthTextslider.ValueLowerBound = 0F;
+            this._ptFirstLineLengthTextslider.ValueLowerBoundIncluded = true;
+            this._ptFirstLineLengthTextslider.ValueUpperBound = 10000F;
+            this._ptFirstLineLengthTextslider.ValueUpperBoundIncluded = true;
+            this._ptFirstLineLengthTextslider.OnChange += new System.EventHandler(this.ValuesUpdate);
             // 
             // _commonOptionsPanel
             // 
@@ -306,11 +310,20 @@
             // 
             // _fractalCombobox
             // 
+            this._fractalCombobox.DisplayMember = "0";
+            this._fractalCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this._fractalCombobox.FormattingEnabled = true;
+            this._fractalCombobox.Items.AddRange(new object[] {
+            "Pythagoras tree",
+            "Koch curve",
+            "Sierpiński carpet",
+            "Sierpiński triangle",
+            "Cantor set"});
             this._fractalCombobox.Location = new System.Drawing.Point(0, 0);
             this._fractalCombobox.Name = "_fractalCombobox";
             this._fractalCombobox.Size = new System.Drawing.Size(243, 28);
             this._fractalCombobox.TabIndex = 0;
+            this._fractalCombobox.SelectedIndexChanged += new System.EventHandler(this.ValuesUpdate);
             // 
             // MainForm
             // 
@@ -326,8 +339,8 @@
             this._splitContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this._splitContainer)).EndInit();
             this._splitContainer.ResumeLayout(false);
-            this._specialOptionsPanel.ResumeLayout(false);
-            this._specialOptionsPanel.PerformLayout();
+            this._ptOptionsPanel.ResumeLayout(false);
+            this._ptOptionsPanel.PerformLayout();
             this._commonOptionsPanel.ResumeLayout(false);
             this._commonOptionsPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -349,11 +362,11 @@
         private System.Windows.Forms.Button _resetButton;
         private System.Windows.Forms.Button _gradientColorAButton;
         private System.Windows.Forms.Button _gradientColorBButton;
-        private System.Windows.Forms.Panel _specialOptionsPanel;
-        private TextSlider textSlider2;
-        private TextSlider textSlider1;
-        private TextSlider textSlider4;
-        private TextSlider textSlider3;
+        private TextSlider _ptLengthRatioTextslider;
+        private TextSlider _ptFirstLineLengthTextslider;
+        private TextSlider _ptAngle2Textslider;
+        private TextSlider _ptAngle1Textslider;
+        private System.Windows.Forms.Panel _ptOptionsPanel;
     }
 }
 

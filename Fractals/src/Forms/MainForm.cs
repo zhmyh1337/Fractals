@@ -40,9 +40,23 @@ namespace Fractals
 
         private void FractalPaint(object sender, PaintEventArgs e)
         {
+            if (_fractalCombobox.SelectedItem == null)
+            {
+                return;
+            }
+
             var render = new Render(_scaleTextslider.Value, _cameraXOffsetTextslider.Value, _cameraYOffsetTextslider.Value, _canvasPanel.Size);
-            var x = new PythagoreanTree((int)_recursionTextslider.Value, _gradientColorA, _gradientColorB, render);
-            x.Draw(e.Graphics);
+
+            Fractal fractal = _fractalCombobox.SelectedIndex switch
+            {
+                0 => new PythagoreanTree((int)_recursionTextslider.Value, _gradientColorA, _gradientColorB, render,
+                    _ptFirstLineLengthTextslider.Value, _ptLengthRatioTextslider.Value, _ptAngle1Textslider.Value, _ptAngle2Textslider.Value),
+                1 => new KochCurve((int)_recursionTextslider.Value, _gradientColorA, _gradientColorB, render),
+//                 1 => new SierpinskiCarpet((int)_recursionTextslider.Value, _gradientColorA, _gradientColorB, render),
+                _ => throw new NotImplementedException()
+            };
+
+            fractal.Draw(e.Graphics);
         }
 
         private void SaveButtonClick(object sender, EventArgs e)
@@ -102,6 +116,12 @@ namespace Fractals
 
         private void DrawButtonClick(object sender, EventArgs e)
         {
+            if (_fractalCombobox.SelectedItem == null)
+            {
+                MessageBox.Show("First select a fractal to draw.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             _canvasPanel.Invalidate();
         }
 
