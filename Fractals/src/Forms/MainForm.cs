@@ -19,6 +19,9 @@ namespace Fractals
         private Panel _canvasPanel;
         private Panel _optionsPanel;
 
+        private Color _gradientColorA = Color.Blue;
+        private Color _gradientColorB = Color.Red;
+
         public MainForm()
         {
             InitializeComponent();
@@ -35,7 +38,7 @@ namespace Fractals
 
         private void FractalPaint(object sender, PaintEventArgs e)
         {
-            var x = new PythagoreanTree(10, Color.Blue, Color.Red);
+            var x = new PythagoreanTree((int)recursionTextslider.Value, _gradientColorA, _gradientColorB);
             x.Draw(e.Graphics);
         }
 
@@ -63,6 +66,27 @@ namespace Fractals
                 {
                     MessageBox.Show("An error occurred while writing to the file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void ValuesUpdate(object sender, EventArgs e)
+        {
+            if (autoRedrawCheckbox.Checked)
+            {
+                _canvasPanel.Invalidate();
+            }
+        }
+
+        private void ChooseGradientColorButtonClick(object sender, EventArgs e)
+        {
+            var button = sender as Button;
+            bool gradientColorA = button.Text.EndsWith('A');
+            var colorDialog = new ColorDialog();
+            colorDialog.Color = gradientColorA ? _gradientColorA : _gradientColorB;
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                (gradientColorA ? ref _gradientColorA : ref _gradientColorB) = colorDialog.Color;
+                ValuesUpdate(null, EventArgs.Empty);
             }
         }
     }

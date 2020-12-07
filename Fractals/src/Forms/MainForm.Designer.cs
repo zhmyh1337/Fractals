@@ -30,13 +30,15 @@
         {
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.gradientColorBButton = new System.Windows.Forms.Button();
+            this.gradientColorAButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
             this.clearButton = new System.Windows.Forms.Button();
             this.drawButton = new System.Windows.Forms.Button();
-            this.textSlider4 = new Fractals.TextSlider();
-            this.textSlider3 = new Fractals.TextSlider();
-            this.textSlider2 = new Fractals.TextSlider();
-            this.textSlider1 = new Fractals.TextSlider();
+            this.yoffsetTextslider = new Fractals.TextSlider();
+            this.xoffsetTextslider = new Fractals.TextSlider();
+            this.scaleTextslider = new Fractals.TextSlider();
+            this.recursionTextslider = new Fractals.TextSlider();
             this.autoRedrawCheckbox = new System.Windows.Forms.CheckBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
@@ -68,23 +70,45 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.gradientColorBButton);
+            this.panel1.Controls.Add(this.gradientColorAButton);
             this.panel1.Controls.Add(this.saveButton);
             this.panel1.Controls.Add(this.clearButton);
             this.panel1.Controls.Add(this.drawButton);
-            this.panel1.Controls.Add(this.textSlider4);
-            this.panel1.Controls.Add(this.textSlider3);
-            this.panel1.Controls.Add(this.textSlider2);
-            this.panel1.Controls.Add(this.textSlider1);
+            this.panel1.Controls.Add(this.yoffsetTextslider);
+            this.panel1.Controls.Add(this.xoffsetTextslider);
+            this.panel1.Controls.Add(this.scaleTextslider);
+            this.panel1.Controls.Add(this.recursionTextslider);
             this.panel1.Controls.Add(this.autoRedrawCheckbox);
             this.panel1.Controls.Add(this.comboBox1);
             this.panel1.Location = new System.Drawing.Point(4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(368, 309);
+            this.panel1.Size = new System.Drawing.Size(368, 331);
             this.panel1.TabIndex = 0;
+            // 
+            // gradientColorBButton
+            // 
+            this.gradientColorBButton.Location = new System.Drawing.Point(190, 260);
+            this.gradientColorBButton.Name = "gradientColorBButton";
+            this.gradientColorBButton.Size = new System.Drawing.Size(178, 29);
+            this.gradientColorBButton.TabIndex = 5;
+            this.gradientColorBButton.Text = "Choose gradient color B";
+            this.gradientColorBButton.UseVisualStyleBackColor = true;
+            this.gradientColorBButton.Click += new System.EventHandler(this.ChooseGradientColorButtonClick);
+            // 
+            // gradientColorAButton
+            // 
+            this.gradientColorAButton.Location = new System.Drawing.Point(0, 260);
+            this.gradientColorAButton.Name = "gradientColorAButton";
+            this.gradientColorAButton.Size = new System.Drawing.Size(178, 29);
+            this.gradientColorAButton.TabIndex = 5;
+            this.gradientColorAButton.Text = "Choose gradient color A";
+            this.gradientColorAButton.UseVisualStyleBackColor = true;
+            this.gradientColorAButton.Click += new System.EventHandler(this.ChooseGradientColorButtonClick);
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(260, 268);
+            this.saveButton.Location = new System.Drawing.Point(260, 294);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(94, 29);
             this.saveButton.TabIndex = 4;
@@ -94,7 +118,7 @@
             // 
             // clearButton
             // 
-            this.clearButton.Location = new System.Drawing.Point(137, 268);
+            this.clearButton.Location = new System.Drawing.Point(137, 294);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(94, 29);
             this.clearButton.TabIndex = 4;
@@ -103,64 +127,68 @@
             // 
             // drawButton
             // 
-            this.drawButton.Location = new System.Drawing.Point(13, 268);
+            this.drawButton.Location = new System.Drawing.Point(13, 294);
             this.drawButton.Name = "drawButton";
             this.drawButton.Size = new System.Drawing.Size(94, 29);
             this.drawButton.TabIndex = 4;
             this.drawButton.Text = "Draw";
             this.drawButton.UseVisualStyleBackColor = true;
             // 
-            // textSlider4
+            // yoffsetTextslider
             // 
-            this.textSlider4.AutoSize = true;
-            this.textSlider4.Label = "scale:";
-            this.textSlider4.Location = new System.Drawing.Point(0, 203);
-            this.textSlider4.Name = "textSlider4";
-            this.textSlider4.RoundValue = false;
-            this.textSlider4.Size = new System.Drawing.Size(358, 59);
-            this.textSlider4.SliderLowerBound = 0.5F;
-            this.textSlider4.SliderUpperBound = 10F;
-            this.textSlider4.TabIndex = 3;
-            this.textSlider4.Value = 1F;
+            this.yoffsetTextslider.AutoSize = true;
+            this.yoffsetTextslider.Label = "y offset:";
+            this.yoffsetTextslider.Location = new System.Drawing.Point(0, 203);
+            this.yoffsetTextslider.Name = "yoffsetTextslider";
+            this.yoffsetTextslider.RoundValue = false;
+            this.yoffsetTextslider.Size = new System.Drawing.Size(358, 59);
+            this.yoffsetTextslider.SliderLowerBound = -5F;
+            this.yoffsetTextslider.SliderUpperBound = 5F;
+            this.yoffsetTextslider.TabIndex = 3;
+            this.yoffsetTextslider.Value = 0F;
+            this.yoffsetTextslider.OnChange += new System.EventHandler(this.ValuesUpdate);
             // 
-            // textSlider3
+            // xoffsetTextslider
             // 
-            this.textSlider3.AutoSize = true;
-            this.textSlider3.Label = "scale:";
-            this.textSlider3.Location = new System.Drawing.Point(0, 147);
-            this.textSlider3.Name = "textSlider3";
-            this.textSlider3.RoundValue = false;
-            this.textSlider3.Size = new System.Drawing.Size(358, 59);
-            this.textSlider3.SliderLowerBound = 0.5F;
-            this.textSlider3.SliderUpperBound = 10F;
-            this.textSlider3.TabIndex = 3;
-            this.textSlider3.Value = 1F;
+            this.xoffsetTextslider.AutoSize = true;
+            this.xoffsetTextslider.Label = "x offset:";
+            this.xoffsetTextslider.Location = new System.Drawing.Point(0, 147);
+            this.xoffsetTextslider.Name = "xoffsetTextslider";
+            this.xoffsetTextslider.RoundValue = false;
+            this.xoffsetTextslider.Size = new System.Drawing.Size(358, 59);
+            this.xoffsetTextslider.SliderLowerBound = -5F;
+            this.xoffsetTextslider.SliderUpperBound = 5F;
+            this.xoffsetTextslider.TabIndex = 3;
+            this.xoffsetTextslider.Value = 0F;
+            this.xoffsetTextslider.OnChange += new System.EventHandler(this.ValuesUpdate);
             // 
-            // textSlider2
+            // scaleTextslider
             // 
-            this.textSlider2.AutoSize = true;
-            this.textSlider2.Label = "scale:";
-            this.textSlider2.Location = new System.Drawing.Point(0, 91);
-            this.textSlider2.Name = "textSlider2";
-            this.textSlider2.RoundValue = false;
-            this.textSlider2.Size = new System.Drawing.Size(358, 59);
-            this.textSlider2.SliderLowerBound = 0.5F;
-            this.textSlider2.SliderUpperBound = 10F;
-            this.textSlider2.TabIndex = 3;
-            this.textSlider2.Value = 1F;
+            this.scaleTextslider.AutoSize = true;
+            this.scaleTextslider.Label = "scale:";
+            this.scaleTextslider.Location = new System.Drawing.Point(0, 91);
+            this.scaleTextslider.Name = "scaleTextslider";
+            this.scaleTextslider.RoundValue = false;
+            this.scaleTextslider.Size = new System.Drawing.Size(358, 59);
+            this.scaleTextslider.SliderLowerBound = 0.5F;
+            this.scaleTextslider.SliderUpperBound = 10F;
+            this.scaleTextslider.TabIndex = 3;
+            this.scaleTextslider.Value = 1F;
+            this.scaleTextslider.OnChange += new System.EventHandler(this.ValuesUpdate);
             // 
-            // textSlider1
+            // recursionTextslider
             // 
-            this.textSlider1.AutoSize = true;
-            this.textSlider1.Label = "recursion level:";
-            this.textSlider1.Location = new System.Drawing.Point(0, 35);
-            this.textSlider1.Name = "textSlider1";
-            this.textSlider1.RoundValue = true;
-            this.textSlider1.Size = new System.Drawing.Size(358, 59);
-            this.textSlider1.SliderLowerBound = 1F;
-            this.textSlider1.SliderUpperBound = 20F;
-            this.textSlider1.TabIndex = 2;
-            this.textSlider1.Value = 10F;
+            this.recursionTextslider.AutoSize = true;
+            this.recursionTextslider.Label = "recursion level:";
+            this.recursionTextslider.Location = new System.Drawing.Point(0, 35);
+            this.recursionTextslider.Name = "recursionTextslider";
+            this.recursionTextslider.RoundValue = true;
+            this.recursionTextslider.Size = new System.Drawing.Size(358, 59);
+            this.recursionTextslider.SliderLowerBound = 1F;
+            this.recursionTextslider.SliderUpperBound = 20F;
+            this.recursionTextslider.TabIndex = 2;
+            this.recursionTextslider.Value = 10F;
+            this.recursionTextslider.OnChange += new System.EventHandler(this.ValuesUpdate);
             // 
             // autoRedrawCheckbox
             // 
@@ -204,15 +232,17 @@
 
         private System.Windows.Forms.SplitContainer splitContainer;
         private System.Windows.Forms.Panel panel1;
-        private TextSlider textSlider1;
+        private TextSlider recursionTextslider;
         private System.Windows.Forms.CheckBox autoRedrawCheckbox;
         private System.Windows.Forms.ComboBox comboBox1;
-        private TextSlider textSlider2;
-        private TextSlider textSlider3;
-        private TextSlider textSlider4;
+        private TextSlider scaleTextslider;
+        private TextSlider xoffsetTextslider;
+        private TextSlider yoffsetTextslider;
         private System.Windows.Forms.Button drawButton;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button clearButton;
+        private System.Windows.Forms.Button gradientColorAButton;
+        private System.Windows.Forms.Button gradientColorBButton;
     }
 }
 
