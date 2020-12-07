@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Numerics;
-using System.Text;
 
 namespace Fractals
 {
@@ -28,13 +26,17 @@ namespace Fractals
                 return;
             }
 
+            // Left point.
             PointF c = Utilities.Lerp(a, b, 1f / 3);
+            // Right point.
             PointF d = Utilities.Lerp(a, b, 2f / 3);
 
             float leftAngle = angle - 1f / 3 * (float)Math.PI;
             float rightAngle = angle + 1f / 3 * (float)Math.PI;
 
             var newLength = length / 3;
+
+            // Top point.
             var eVector = new Vector2(c.X, c.Y) + new Vector2(
                 (float)Math.Cos(leftAngle) * newLength,
                 (float)Math.Sin(leftAngle) * newLength);

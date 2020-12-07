@@ -1,10 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Text;
+﻿using System.Drawing;
 
 namespace Fractals
 {
+    /// <summary>
+    /// This is a helper class for drawing.
+    /// It works with floating point coordinates.
+    /// By default (w/o scaling and moving) topLeft coordinates are: (-1, -1), bottomRight: (1, 1).
+    /// It also supports scaling and moving the camera.
+    /// </summary>
     class Render
     {
         public Render(float scale, float offsetX, float offsetY, SizeF canvasSize)
@@ -42,6 +45,10 @@ namespace Fractals
             graphics.FillRectangle(brush, screenRectangle);
         }
 
+        /// <summary>
+        /// Gets the current camera view. By default ((-1, -1), (1, 1)).
+        /// </summary>
+        /// <returns>Tuple (topLeft, bottomRight).</returns>
         private (PointF, PointF) GetCameraBounds()
         {
             var topLeft = new PointF(

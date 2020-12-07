@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Text;
 
 namespace Fractals
 {
@@ -15,6 +13,7 @@ namespace Fractals
 
         public override void Draw(Graphics graphics)
         {
+            // Triangle points.
             var a = new PointF(-0.9f, 0.9f);
             var b = new PointF(0f, 0.9f - 0.9f * (float)Math.Sqrt(3));
             var c = new PointF(0.9f, 0.9f);

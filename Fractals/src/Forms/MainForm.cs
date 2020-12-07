@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Fractals
@@ -32,12 +25,15 @@ namespace Fractals
             UpdateGradientColorButtons();
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        private void MainFormLoad(object sender, EventArgs e)
         {
             // In order to fix some weird displaying inside splitContainer border.
             ActiveControl = _optionsPanel;
         }
 
+        /// <summary>
+        /// OnPaint event for the left panel (a.k.a. canvas).
+        /// </summary>
         private void FractalPaint(object sender, PaintEventArgs e)
         {
             if (_fractalCombobox.SelectedItem == null)
@@ -89,6 +85,10 @@ namespace Fractals
             }
         }
 
+        /// <summary>
+        /// OnChange event for any option.
+        /// To invoke auto redraw.
+        /// </summary>
         private void ValuesUpdate(object sender, EventArgs e)
         {
             if (_autoRedrawCheckbox.Checked)
@@ -117,6 +117,9 @@ namespace Fractals
             }
         }
 
+        /// <summary>
+        /// Manual drawing with the button.
+        /// </summary>
         private void DrawButtonClick(object sender, EventArgs e)
         {
             if (_fractalCombobox.SelectedItem == null)
@@ -147,6 +150,9 @@ namespace Fractals
             _canvasPanel.Invalidate();
         }
 
+        /// <summary>
+        /// OnChange event for fractal type ComboBox.
+        /// </summary>
         private void FractalTypeChange(object sender, EventArgs e)
         {
             _ptOptionsPanel.Visible = false;

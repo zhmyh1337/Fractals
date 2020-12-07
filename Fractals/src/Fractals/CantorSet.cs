@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Text;
+﻿using System.Drawing;
 
 namespace Fractals
 {
@@ -24,10 +21,10 @@ namespace Fractals
         private void Draw(Graphics graphics, float y, float xFrom, float xTo, int recursionLevel = 0)
         {
             var gradientColor = Utilities.Lerp(_gradientBeginning, _gradientEnding, (float)recursionLevel / _recursionLevelLimit);
-            //             _render.DrawLine(graphics,
-            //                 new Pen(gradientColor, 5),
-            //                 new PointF(xFrom, y), new PointF(xTo, y)
-            //             );
+//             _render.DrawLine(graphics,
+//                 new Pen(gradientColor, 5),
+//                 new PointF(xFrom, y), new PointF(xTo, y)
+//             );
             _render.DrawFilledRectangle(graphics, new SolidBrush(gradientColor), new RectangleF(xFrom, y, xTo - xFrom, _width));
 
             if (recursionLevel == _recursionLevelLimit)

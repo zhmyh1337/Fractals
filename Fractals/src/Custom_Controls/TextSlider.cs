@@ -1,16 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
 using System.Windows.Forms;
-using System.Diagnostics;
 
 namespace Fractals
 {
+    /// <summary>
+    /// This custom control combines <see cref="TrackBar"/> and <see cref="TextBox"/> which share the same value.
+    /// Also it has <see cref="System.Windows.Forms.Label"/> to display a name.
+    /// </summary>
     public partial class TextSlider : UserControl
     {
+        /// <summary>
+        /// Invokes when used changed <see cref="TrackBar"/> or <see cref="TextBox"/>.
+        /// </summary>
         public event EventHandler OnChange;
 
         public float ValueLowerBound { get; set; } = float.NegativeInfinity;
@@ -60,6 +61,9 @@ namespace Fractals
             }
         }
 
+        /// <summary>
+        /// <see cref="TrackBar"/>'s lower bound.
+        /// </summary>
         public float SliderLowerBound
         {
             get
@@ -72,7 +76,10 @@ namespace Fractals
                 Update();
             }
         }
-
+        
+        /// <summary>
+        /// <see cref="TrackBar"/>'s upper bound.
+        /// </summary>
         public float SliderUpperBound
         {
             get
@@ -86,6 +93,9 @@ namespace Fractals
             }
         }
 
+        /// <summary>
+        /// Is integer.
+        /// </summary>
         public bool RoundValue
         {
             get
@@ -140,7 +150,10 @@ namespace Fractals
         {
             _textBox.Text = _value.ToString();
         }
-
+        
+        /// <summary>
+        /// When the user is done changing the textbox (either by leaving it or by pressing Enter).
+        /// </summary>
         private void TextboxSubmitValue(object sender)
         {
             var textbox = sender as TextBox;

@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
 
 namespace Fractals
 {
@@ -24,6 +20,9 @@ namespace Fractals
             Draw(graphics, new PointF(0, 1), _firstLineLength);
         }
 
+        /// <summary>
+        /// Drawing the first line.
+        /// </summary>
         private void Draw(Graphics graphics, PointF point, float length)
         {
             var newPoint = point;
@@ -33,6 +32,9 @@ namespace Fractals
             Draw(graphics, newPoint, length, (float)(-Math.PI / 2));
         }
 
+        /// <summary>
+        /// Calling the children.
+        /// </summary>
         private void Draw(Graphics graphics, PointF point, float length, float angle, int recursionLevel = 1)
         {
             if (recursionLevel == _recursionLevelLimit)
@@ -44,6 +46,9 @@ namespace Fractals
             Draw(graphics, point, length, angle, _angle2, recursionLevel);
         }
 
+        /// <summary>
+        /// New line processing.
+        /// </summary>
         private void Draw(Graphics graphics, PointF point, float length, float angle, float deltaAngle, int recursionLevel)
         {
             float newAngle = angle + deltaAngle;
