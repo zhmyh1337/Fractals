@@ -54,6 +54,8 @@ namespace Fractals
                 1 => new KochCurve((int)_recursionTextslider.Value, _gradientColorA, _gradientColorB, render),
                 2 => new SierpinskiCarpet((int)_recursionTextslider.Value, _gradientColorA, _gradientColorB, render),
                 3 => new SierpinskiTriangle((int)_recursionTextslider.Value, _gradientColorA, _gradientColorB, render),
+                4 => new CantorSet((int)_recursionTextslider.Value, _gradientColorA, _gradientColorB, render,
+                    _csVerticalDistanceTextslider.Value, _csHorizontalDistanceTextslider.Value, _csWidthTextslider.Value),
                 _ => throw new NotImplementedException()
             };
 
@@ -133,6 +135,26 @@ namespace Fractals
             _cameraXOffsetTextslider.Value = 0;
             _cameraYOffsetTextslider.Value = 0;
             _canvasPanel.Invalidate();
+        }
+
+        private void FractalTypeChange(object sender, EventArgs e)
+        {
+            _ptOptionsPanel.Visible = false;
+            _csOptionsPanel.Visible = false;
+
+            switch (_fractalCombobox.SelectedIndex)
+            {
+                case 0:
+                    _ptOptionsPanel.Visible = true;
+                    break;
+                case 4:
+                    _csOptionsPanel.Visible = true;
+                    break;
+                default:
+                    break;
+            }
+
+            ValuesUpdate(sender, e);
         }
     }
 }

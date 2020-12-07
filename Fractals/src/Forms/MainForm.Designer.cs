@@ -34,6 +34,10 @@
             this._ptAngle1Textslider = new Fractals.TextSlider();
             this._ptLengthRatioTextslider = new Fractals.TextSlider();
             this._ptFirstLineLengthTextslider = new Fractals.TextSlider();
+            this._csOptionsPanel = new System.Windows.Forms.Panel();
+            this._csVerticalDistanceTextslider = new Fractals.TextSlider();
+            this._csHorizontalDistanceTextslider = new Fractals.TextSlider();
+            this._csWidthTextslider = new Fractals.TextSlider();
             this._commonOptionsPanel = new System.Windows.Forms.Panel();
             this._gradientColorBButton = new System.Windows.Forms.Button();
             this._gradientColorAButton = new System.Windows.Forms.Button();
@@ -50,6 +54,7 @@
             this._splitContainer.Panel2.SuspendLayout();
             this._splitContainer.SuspendLayout();
             this._ptOptionsPanel.SuspendLayout();
+            this._csOptionsPanel.SuspendLayout();
             this._commonOptionsPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,6 +73,7 @@
             // _splitContainer.Panel2
             // 
             this._splitContainer.Panel2.Controls.Add(this._ptOptionsPanel);
+            this._splitContainer.Panel2.Controls.Add(this._csOptionsPanel);
             this._splitContainer.Panel2.Controls.Add(this._commonOptionsPanel);
             this._splitContainer.Size = new System.Drawing.Size(959, 578);
             this._splitContainer.SplitterDistance = 578;
@@ -85,6 +91,7 @@
             this._ptOptionsPanel.Name = "_ptOptionsPanel";
             this._ptOptionsPanel.Size = new System.Drawing.Size(368, 230);
             this._ptOptionsPanel.TabIndex = 1;
+            this._ptOptionsPanel.Visible = false;
             // 
             // _ptAngle2Textslider
             // 
@@ -157,6 +164,71 @@
             this._ptFirstLineLengthTextslider.ValueUpperBound = 10000F;
             this._ptFirstLineLengthTextslider.ValueUpperBoundIncluded = true;
             this._ptFirstLineLengthTextslider.OnChange += new System.EventHandler(this.ValuesUpdate);
+            // 
+            // _csOptionsPanel
+            // 
+            this._csOptionsPanel.Controls.Add(this._csVerticalDistanceTextslider);
+            this._csOptionsPanel.Controls.Add(this._csHorizontalDistanceTextslider);
+            this._csOptionsPanel.Controls.Add(this._csWidthTextslider);
+            this._csOptionsPanel.Location = new System.Drawing.Point(4, 341);
+            this._csOptionsPanel.Name = "_csOptionsPanel";
+            this._csOptionsPanel.Size = new System.Drawing.Size(368, 230);
+            this._csOptionsPanel.TabIndex = 1;
+            this._csOptionsPanel.Visible = false;
+            // 
+            // _csVerticalDistanceTextslider
+            // 
+            this._csVerticalDistanceTextslider.AutoSize = true;
+            this._csVerticalDistanceTextslider.Label = "vert. distance:";
+            this._csVerticalDistanceTextslider.Location = new System.Drawing.Point(0, 0);
+            this._csVerticalDistanceTextslider.Name = "_csVerticalDistanceTextslider";
+            this._csVerticalDistanceTextslider.RoundValue = false;
+            this._csVerticalDistanceTextslider.Size = new System.Drawing.Size(358, 59);
+            this._csVerticalDistanceTextslider.SliderLowerBound = 0F;
+            this._csVerticalDistanceTextslider.SliderUpperBound = 1F;
+            this._csVerticalDistanceTextslider.TabIndex = 0;
+            this._csVerticalDistanceTextslider.Value = 0.05F;
+            this._csVerticalDistanceTextslider.ValueLowerBound = 0F;
+            this._csVerticalDistanceTextslider.ValueLowerBoundIncluded = true;
+            this._csVerticalDistanceTextslider.ValueUpperBound = 10F;
+            this._csVerticalDistanceTextslider.ValueUpperBoundIncluded = true;
+            this._csVerticalDistanceTextslider.OnChange += new System.EventHandler(this.ValuesUpdate);
+            // 
+            // _csHorizontalDistanceTextslider
+            // 
+            this._csHorizontalDistanceTextslider.AutoSize = true;
+            this._csHorizontalDistanceTextslider.Label = "hor. distance:";
+            this._csHorizontalDistanceTextslider.Location = new System.Drawing.Point(0, 56);
+            this._csHorizontalDistanceTextslider.Name = "_csHorizontalDistanceTextslider";
+            this._csHorizontalDistanceTextslider.RoundValue = false;
+            this._csHorizontalDistanceTextslider.Size = new System.Drawing.Size(358, 59);
+            this._csHorizontalDistanceTextslider.SliderLowerBound = 0F;
+            this._csHorizontalDistanceTextslider.SliderUpperBound = 0.5F;
+            this._csHorizontalDistanceTextslider.TabIndex = 0;
+            this._csHorizontalDistanceTextslider.Value = 0.166666666F;
+            this._csHorizontalDistanceTextslider.ValueLowerBound = 0F;
+            this._csHorizontalDistanceTextslider.ValueLowerBoundIncluded = true;
+            this._csHorizontalDistanceTextslider.ValueUpperBound = 0.5F;
+            this._csHorizontalDistanceTextslider.ValueUpperBoundIncluded = true;
+            this._csHorizontalDistanceTextslider.OnChange += new System.EventHandler(this.ValuesUpdate);
+            // 
+            // _csWidthTextslider
+            // 
+            this._csWidthTextslider.AutoSize = true;
+            this._csWidthTextslider.Label = "width:";
+            this._csWidthTextslider.Location = new System.Drawing.Point(0, 112);
+            this._csWidthTextslider.Name = "_csWidthTextslider";
+            this._csWidthTextslider.RoundValue = false;
+            this._csWidthTextslider.Size = new System.Drawing.Size(358, 59);
+            this._csWidthTextslider.SliderLowerBound = 0F;
+            this._csWidthTextslider.SliderUpperBound = 0.1F;
+            this._csWidthTextslider.TabIndex = 0;
+            this._csWidthTextslider.Value = 0.025F;
+            this._csWidthTextslider.ValueLowerBound = 0F;
+            this._csWidthTextslider.ValueLowerBoundIncluded = true;
+            this._csWidthTextslider.ValueUpperBound = 2F;
+            this._csWidthTextslider.ValueUpperBoundIncluded = true;
+            this._csWidthTextslider.OnChange += new System.EventHandler(this.ValuesUpdate);
             // 
             // _commonOptionsPanel
             // 
@@ -323,7 +395,7 @@
             this._fractalCombobox.Name = "_fractalCombobox";
             this._fractalCombobox.Size = new System.Drawing.Size(243, 28);
             this._fractalCombobox.TabIndex = 0;
-            this._fractalCombobox.SelectedIndexChanged += new System.EventHandler(this.ValuesUpdate);
+            this._fractalCombobox.SelectedIndexChanged += new System.EventHandler(this.FractalTypeChange);
             // 
             // MainForm
             // 
@@ -341,6 +413,8 @@
             this._splitContainer.ResumeLayout(false);
             this._ptOptionsPanel.ResumeLayout(false);
             this._ptOptionsPanel.PerformLayout();
+            this._csOptionsPanel.ResumeLayout(false);
+            this._csOptionsPanel.PerformLayout();
             this._commonOptionsPanel.ResumeLayout(false);
             this._commonOptionsPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -367,6 +441,10 @@
         private TextSlider _ptAngle2Textslider;
         private TextSlider _ptAngle1Textslider;
         private System.Windows.Forms.Panel _ptOptionsPanel;
+        private System.Windows.Forms.Panel _csOptionsPanel;
+        private TextSlider _csVerticalDistanceTextslider;
+        private TextSlider _csHorizontalDistanceTextslider;
+        private TextSlider _csWidthTextslider;
     }
 }
 
