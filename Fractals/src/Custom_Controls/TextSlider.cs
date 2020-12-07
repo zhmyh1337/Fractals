@@ -157,9 +157,12 @@ namespace Fractals
         private void TextboxSubmitValue(object sender)
         {
             var textbox = sender as TextBox;
+            bool changed = false;
             try
             {
-                Value = float.Parse(_textBox.Text);
+                var newValue = float.Parse(_textBox.Text);
+                changed = Value != newValue;
+                Value = newValue;
             }
             catch (Exception e)
             {
@@ -168,7 +171,11 @@ namespace Fractals
                 Program.MainForm.ActiveControl = textbox;
                 return;
             }
-            OnChange?.Invoke(sender, EventArgs.Empty);
+
+            if (changed)
+            {
+                OnChange?.Invoke(sender, EventArgs.Empty);
+            }
         }
 
         private void TextboxLeave(object sender, EventArgs e)
@@ -187,8 +194,12 @@ namespace Fractals
         private void TrackbarScroll(object sender, EventArgs e)
         {
             var trackbar = sender as TrackBar;
-            Value = _sliderLowerBound + (_sliderUpperBound - _sliderLowerBound) * trackbar.Value / (trackbar.Maximum);
-            OnChange?.Invoke(sender, EventArgs.Empty);
+            var newValue = _sliderLowerBound + (_sliderUpperBound - _sliderLowerBound) * trackbar.Value / (trackbar.Maximum);
+            if (Value != newValue)
+            {
+                Value = newValue;
+                OnChange?.Invoke(sender, EventArgs.Empty);
+            }
         }
     }
 }
