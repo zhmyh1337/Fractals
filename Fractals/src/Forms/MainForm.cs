@@ -134,6 +134,16 @@ namespace Fractals
             _scaleTextslider.Value = 1;
             _cameraXOffsetTextslider.Value = 0;
             _cameraYOffsetTextslider.Value = 0;
+
+            _ptFirstLineLengthTextslider.Value = 0.6f;
+            _ptLengthRatioTextslider.Value = 0.66666f;
+            _ptAngle1Textslider.Value = -30f;
+            _ptAngle2Textslider.Value = 45f;
+
+            _csVerticalDistanceTextslider.Value = 0.05f;
+            _csHorizontalDistanceTextslider.Value = 0.166666666f;
+            _csWidthTextslider.Value = 0.025f;
+
             _canvasPanel.Invalidate();
         }
 
