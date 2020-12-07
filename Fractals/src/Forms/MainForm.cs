@@ -33,23 +33,13 @@ namespace Fractals
             ActiveControl = _optionsPanel;
         }
 
-        private void MainForm_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-            (sender as Panel).BackColor = Color.Red;
-        }
-
         private void FractalPaint(object sender, PaintEventArgs e)
         {
             var x = new PythagoreanTree(10, Color.Blue, Color.Red);
             x.Draw(e.Graphics);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void SaveButtonClick(object sender, EventArgs e)
         {
             var saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "png (*.png)|*.png|jpeg (*.jpg)|*.jpg|bmp (*.bmp)|*.bmp|tiff (*.tiff)|*.tiff";

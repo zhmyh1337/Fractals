@@ -17,7 +17,11 @@ namespace Fractals
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            MainForm = new MainForm();
+            Application.Run(MainForm);
         }
+
+        // To be able to change active control.
+        static public MainForm MainForm { get; private set; }
     }
 }

@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.label = new System.Windows.Forms.Label();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            this.trackBar = new System.Windows.Forms.TrackBar();
+            this.textBox = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar)).BeginInit();
             this.SuspendLayout();
             // 
             // label
@@ -43,32 +43,36 @@
             this.label.TabIndex = 0;
             this.label.Text = "label";
             // 
-            // trackBar1
+            // trackBar
             // 
-            this.trackBar1.Location = new System.Drawing.Point(112, 0);
-            this.trackBar1.Maximum = 1000;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(150, 56);
-            this.trackBar1.TabIndex = 1;
+            this.trackBar.LargeChange = 1;
+            this.trackBar.Location = new System.Drawing.Point(112, 0);
+            this.trackBar.Maximum = 1000;
+            this.trackBar.Name = "trackBar";
+            this.trackBar.Size = new System.Drawing.Size(150, 56);
+            this.trackBar.TabIndex = 1;
+            this.trackBar.Scroll += new System.EventHandler(this.TrackbarScroll);
             // 
-            // textBox1
+            // textBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(272, 15);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(83, 27);
-            this.textBox1.TabIndex = 2;
+            this.textBox.Location = new System.Drawing.Point(272, 15);
+            this.textBox.Name = "textBox";
+            this.textBox.Size = new System.Drawing.Size(83, 27);
+            this.textBox.TabIndex = 2;
+            this.textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextboxKeypress);
+            this.textBox.Leave += new System.EventHandler(this.TextboxLeave);
             // 
             // TextSlider
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.trackBar1);
+            this.Controls.Add(this.textBox);
+            this.Controls.Add(this.trackBar);
             this.Controls.Add(this.label);
             this.Name = "TextSlider";
             this.Size = new System.Drawing.Size(361, 56);
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -77,7 +81,7 @@
         #endregion
 
         private System.Windows.Forms.Label label;
-        private System.Windows.Forms.TrackBar trackBar1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TrackBar trackBar;
+        private System.Windows.Forms.TextBox textBox;
     }
 }
