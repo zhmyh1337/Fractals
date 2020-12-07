@@ -90,5 +90,19 @@ namespace Fractals
                 ValuesUpdate(null, EventArgs.Empty);
             }
         }
+
+        private void DrawButtonClick(object sender, EventArgs e)
+        {
+            _canvasPanel.Invalidate();
+        }
+
+        private void ResetButtonClick(object sender, EventArgs e)
+        {
+            recursionTextslider.Value = 10;
+            scaleTextslider.Value = 1;
+            cameraXOffsetTextslider.Value = 0;
+            cameraYOffsetTextslider.Value = 0;
+            _canvasPanel.Invalidate();
+        }
     }
 }

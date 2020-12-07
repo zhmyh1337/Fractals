@@ -33,7 +33,7 @@
             this.gradientColorBButton = new System.Windows.Forms.Button();
             this.gradientColorAButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
-            this.clearButton = new System.Windows.Forms.Button();
+            this.resetButton = new System.Windows.Forms.Button();
             this.drawButton = new System.Windows.Forms.Button();
             this.cameraYOffsetTextslider = new Fractals.TextSlider();
             this.cameraXOffsetTextslider = new Fractals.TextSlider();
@@ -73,7 +73,7 @@
             this.panel1.Controls.Add(this.gradientColorBButton);
             this.panel1.Controls.Add(this.gradientColorAButton);
             this.panel1.Controls.Add(this.saveButton);
-            this.panel1.Controls.Add(this.clearButton);
+            this.panel1.Controls.Add(this.resetButton);
             this.panel1.Controls.Add(this.drawButton);
             this.panel1.Controls.Add(this.cameraYOffsetTextslider);
             this.panel1.Controls.Add(this.cameraXOffsetTextslider);
@@ -116,14 +116,15 @@
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.SaveButtonClick);
             // 
-            // clearButton
+            // resetButton
             // 
-            this.clearButton.Location = new System.Drawing.Point(137, 294);
-            this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(94, 29);
-            this.clearButton.TabIndex = 4;
-            this.clearButton.Text = "Clear";
-            this.clearButton.UseVisualStyleBackColor = true;
+            this.resetButton.Location = new System.Drawing.Point(137, 294);
+            this.resetButton.Name = "resetButton";
+            this.resetButton.Size = new System.Drawing.Size(94, 29);
+            this.resetButton.TabIndex = 4;
+            this.resetButton.Text = "Reset";
+            this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.ResetButtonClick);
             // 
             // drawButton
             // 
@@ -133,33 +134,42 @@
             this.drawButton.TabIndex = 4;
             this.drawButton.Text = "Draw";
             this.drawButton.UseVisualStyleBackColor = true;
+            this.drawButton.Click += new System.EventHandler(this.DrawButtonClick);
             // 
-            // yoffsetTextslider
+            // cameraYOffsetTextslider
             // 
             this.cameraYOffsetTextslider.AutoSize = true;
             this.cameraYOffsetTextslider.Label = "camera y offset:";
             this.cameraYOffsetTextslider.Location = new System.Drawing.Point(0, 203);
-            this.cameraYOffsetTextslider.Name = "yoffsetTextslider";
+            this.cameraYOffsetTextslider.Name = "cameraYOffsetTextslider";
             this.cameraYOffsetTextslider.RoundValue = false;
             this.cameraYOffsetTextslider.Size = new System.Drawing.Size(358, 59);
             this.cameraYOffsetTextslider.SliderLowerBound = -5F;
             this.cameraYOffsetTextslider.SliderUpperBound = 5F;
             this.cameraYOffsetTextslider.TabIndex = 3;
             this.cameraYOffsetTextslider.Value = 0F;
+            this.cameraYOffsetTextslider.ValueLowerBound = -10000F;
+            this.cameraYOffsetTextslider.ValueLowerBoundIncluded = true;
+            this.cameraYOffsetTextslider.ValueUpperBound = 10000F;
+            this.cameraYOffsetTextslider.ValueUpperBoundIncluded = true;
             this.cameraYOffsetTextslider.OnChange += new System.EventHandler(this.ValuesUpdate);
             // 
-            // xoffsetTextslider
+            // cameraXOffsetTextslider
             // 
             this.cameraXOffsetTextslider.AutoSize = true;
             this.cameraXOffsetTextslider.Label = "camera x offset:";
             this.cameraXOffsetTextslider.Location = new System.Drawing.Point(0, 147);
-            this.cameraXOffsetTextslider.Name = "xoffsetTextslider";
+            this.cameraXOffsetTextslider.Name = "cameraXOffsetTextslider";
             this.cameraXOffsetTextslider.RoundValue = false;
             this.cameraXOffsetTextslider.Size = new System.Drawing.Size(358, 59);
             this.cameraXOffsetTextslider.SliderLowerBound = -5F;
             this.cameraXOffsetTextslider.SliderUpperBound = 5F;
             this.cameraXOffsetTextslider.TabIndex = 3;
             this.cameraXOffsetTextslider.Value = 0F;
+            this.cameraXOffsetTextslider.ValueLowerBound = -10000F;
+            this.cameraXOffsetTextslider.ValueLowerBoundIncluded = true;
+            this.cameraXOffsetTextslider.ValueUpperBound = 10000F;
+            this.cameraXOffsetTextslider.ValueUpperBoundIncluded = true;
             this.cameraXOffsetTextslider.OnChange += new System.EventHandler(this.ValuesUpdate);
             // 
             // scaleTextslider
@@ -174,6 +184,10 @@
             this.scaleTextslider.SliderUpperBound = 10F;
             this.scaleTextslider.TabIndex = 3;
             this.scaleTextslider.Value = 1F;
+            this.scaleTextslider.ValueLowerBound = -10000F;
+            this.scaleTextslider.ValueLowerBoundIncluded = true;
+            this.scaleTextslider.ValueUpperBound = 10000F;
+            this.scaleTextslider.ValueUpperBoundIncluded = true;
             this.scaleTextslider.OnChange += new System.EventHandler(this.ValuesUpdate);
             // 
             // recursionTextslider
@@ -188,6 +202,10 @@
             this.recursionTextslider.SliderUpperBound = 20F;
             this.recursionTextslider.TabIndex = 2;
             this.recursionTextslider.Value = 10F;
+            this.recursionTextslider.ValueLowerBound = 1F;
+            this.recursionTextslider.ValueLowerBoundIncluded = true;
+            this.recursionTextslider.ValueUpperBound = 50F;
+            this.recursionTextslider.ValueUpperBoundIncluded = true;
             this.recursionTextslider.OnChange += new System.EventHandler(this.ValuesUpdate);
             // 
             // autoRedrawCheckbox
@@ -240,7 +258,7 @@
         private TextSlider cameraYOffsetTextslider;
         private System.Windows.Forms.Button drawButton;
         private System.Windows.Forms.Button saveButton;
-        private System.Windows.Forms.Button clearButton;
+        private System.Windows.Forms.Button resetButton;
         private System.Windows.Forms.Button gradientColorAButton;
         private System.Windows.Forms.Button gradientColorBButton;
     }

@@ -13,6 +13,11 @@ namespace Fractals
     {
         public event EventHandler OnChange;
 
+        public float ValueLowerBound { get; set; } = float.NegativeInfinity;
+        public float ValueUpperBound { get; set; } = float.PositiveInfinity;
+        public bool ValueLowerBoundIncluded { get; set; } = false;
+        public bool ValueUpperBoundIncluded { get; set; } = false;
+
         private float _value = 0f;
         private bool _roundValue = false;
         private float _sliderLowerBound = 0f;
@@ -43,6 +48,13 @@ namespace Fractals
             }
             set
             {
+                if ((ValueLowerBoundIncluded ? value < ValueLowerBound : value <= ValueLowerBound) ||
+                    (ValueUpperBoundIncluded ? value > ValueUpperBound : value >= ValueUpperBound)
+                )
+                {
+                    throw new ArgumentOutOfRangeException("value", value,
+                        $"Value must be >{(ValueLowerBoundIncluded ? "=" : "")}{ValueLowerBound} and <{(ValueUpperBoundIncluded ? "=" : "")}{ValueUpperBound}.");
+                }
                 _value = value;
                 Update();
             }
@@ -132,16 +144,18 @@ namespace Fractals
         private void TextboxSubmitValue(object sender)
         {
             var textbox = sender as TextBox;
-            if (float.TryParse(textbox.Text, out var newValue))
+            try
             {
-                Value = newValue;
-                OnChange?.Invoke(sender, EventArgs.Empty);
+                Value = float.Parse(textBox.Text);
             }
-            else
+            catch (Exception e)
             {
-                MessageBox.Show("Incorrect value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string message = e is ArgumentOutOfRangeException ? e.Message : "Incorrect value.";
+                MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Program.MainForm.ActiveControl = textbox;
+                return;
             }
+            OnChange?.Invoke(sender, EventArgs.Empty);
         }
 
         private void TextboxLeave(object sender, EventArgs e)
