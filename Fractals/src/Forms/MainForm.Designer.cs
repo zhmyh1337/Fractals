@@ -31,6 +31,7 @@
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
+            this.textSlider1 = new Fractals.TextSlider();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
@@ -51,9 +52,10 @@
             // 
             // splitContainer.Panel2
             // 
+            this.splitContainer.Panel2.Controls.Add(this.textSlider1);
             this.splitContainer.Panel2.Controls.Add(this.panel1);
-            this.splitContainer.Size = new System.Drawing.Size(1006, 515);
-            this.splitContainer.SplitterDistance = 613;
+            this.splitContainer.Size = new System.Drawing.Size(1074, 515);
+            this.splitContainer.SplitterDistance = 654;
             this.splitContainer.SplitterWidth = 1;
             this.splitContainer.TabIndex = 0;
             this.splitContainer.Text = "splitContainer";
@@ -64,7 +66,7 @@
             this.panel1.Controls.Add(this.button1);
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(148, 160);
+            this.panel1.Size = new System.Drawing.Size(183, 174);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -78,11 +80,19 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // textSlider1
+            // 
+            this.textSlider1.AutoSize = true;
+            this.textSlider1.Location = new System.Drawing.Point(13, 196);
+            this.textSlider1.Name = "textSlider1";
+            this.textSlider1.Size = new System.Drawing.Size(358, 59);
+            this.textSlider1.TabIndex = 1;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1006, 515);
+            this.ClientSize = new System.Drawing.Size(1074, 515);
             this.Controls.Add(this.splitContainer);
             this.DoubleBuffered = true;
             this.Name = "MainForm";
@@ -91,6 +101,7 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.MainForm_Paint);
             this.splitContainer.Panel2.ResumeLayout(false);
+            this.splitContainer.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();
             this.splitContainer.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -103,6 +114,7 @@
         private System.Windows.Forms.SplitContainer splitContainer;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button1;
+        private TextSlider textSlider1;
     }
 }
 
