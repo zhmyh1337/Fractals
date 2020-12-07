@@ -26,8 +26,10 @@ namespace Fractals
         {
             InitializeComponent();
 
-            _canvasPanel = splitContainer.Panel1;
-            _optionsPanel = splitContainer.Panel2;
+            _canvasPanel = _splitContainer.Panel1;
+            _optionsPanel = _splitContainer.Panel2;
+
+            UpdateGradientColorButtons();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -38,8 +40,8 @@ namespace Fractals
 
         private void FractalPaint(object sender, PaintEventArgs e)
         {
-            var render = new Render(scaleTextslider.Value, cameraXOffsetTextslider.Value, cameraYOffsetTextslider.Value, _canvasPanel.Size);
-            var x = new PythagoreanTree((int)recursionTextslider.Value, _gradientColorA, _gradientColorB, render);
+            var render = new Render(_scaleTextslider.Value, _cameraXOffsetTextslider.Value, _cameraYOffsetTextslider.Value, _canvasPanel.Size);
+            var x = new PythagoreanTree((int)_recursionTextslider.Value, _gradientColorA, _gradientColorB, render);
             x.Draw(e.Graphics);
         }
 
@@ -72,10 +74,16 @@ namespace Fractals
 
         private void ValuesUpdate(object sender, EventArgs e)
         {
-            if (autoRedrawCheckbox.Checked)
+            if (_autoRedrawCheckbox.Checked)
             {
                 _canvasPanel.Invalidate();
             }
+        }
+
+        private void UpdateGradientColorButtons()
+        {
+            _gradientColorAButton.ForeColor = _gradientColorA;
+            _gradientColorBButton.ForeColor = _gradientColorB;
         }
 
         private void ChooseGradientColorButtonClick(object sender, EventArgs e)
@@ -87,6 +95,7 @@ namespace Fractals
             if (colorDialog.ShowDialog() == DialogResult.OK)
             {
                 (gradientColorA ? ref _gradientColorA : ref _gradientColorB) = colorDialog.Color;
+                UpdateGradientColorButtons();
                 ValuesUpdate(null, EventArgs.Empty);
             }
         }
@@ -98,10 +107,10 @@ namespace Fractals
 
         private void ResetButtonClick(object sender, EventArgs e)
         {
-            recursionTextslider.Value = 10;
-            scaleTextslider.Value = 1;
-            cameraXOffsetTextslider.Value = 0;
-            cameraYOffsetTextslider.Value = 0;
+            _recursionTextslider.Value = 10;
+            _scaleTextslider.Value = 1;
+            _cameraXOffsetTextslider.Value = 0;
+            _cameraYOffsetTextslider.Value = 0;
             _canvasPanel.Invalidate();
         }
     }

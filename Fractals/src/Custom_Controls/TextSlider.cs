@@ -32,11 +32,11 @@ namespace Fractals
         {
             get
             {
-                return label.Text;
+                return _label.Text;
             }
             set
             {
-                label.Text = value;
+                _label.Text = value;
             }
         }
 
@@ -120,12 +120,12 @@ namespace Fractals
             // Making sure arrow keys increment/decrement our integer by one.
             if (_roundValue && _sliderUpperBound != _sliderLowerBound)
             {
-                trackBar.SmallChange = trackBar.LargeChange = (int)Math.Ceiling((double)trackBar.Maximum /
+                _trackBar.SmallChange = _trackBar.LargeChange = (int)Math.Ceiling((double)_trackBar.Maximum /
                     (_sliderUpperBound - _sliderLowerBound));
             }
             else
             {
-                trackBar.SmallChange = trackBar.LargeChange = 1;
+                _trackBar.SmallChange = _trackBar.LargeChange = 1;
             }
         }
 
@@ -133,12 +133,12 @@ namespace Fractals
         {
             float converted = _value - _sliderLowerBound;
             converted /= _sliderUpperBound - _sliderLowerBound;
-            trackBar.Value = Math.Clamp(Utilities.Round(converted * trackBar.Maximum), trackBar.Minimum, trackBar.Maximum);
+            _trackBar.Value = Math.Clamp(Utilities.Round(converted * _trackBar.Maximum), _trackBar.Minimum, _trackBar.Maximum);
         }
 
         private void UpdateTextBoxValue()
         {
-            textBox.Text = _value.ToString();
+            _textBox.Text = _value.ToString();
         }
 
         private void TextboxSubmitValue(object sender)
@@ -146,7 +146,7 @@ namespace Fractals
             var textbox = sender as TextBox;
             try
             {
-                Value = float.Parse(textBox.Text);
+                Value = float.Parse(_textBox.Text);
             }
             catch (Exception e)
             {
